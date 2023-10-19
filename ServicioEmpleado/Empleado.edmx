@@ -1,0 +1,436 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="BD_CerveceriaCLLModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="TB_Empleado">
+          <Key>
+            <PropertyRef Name="IDEmpleado" />
+          </Key>
+          <Property Name="IDEmpleado" Type="char" MaxLength="4" Nullable="false" />
+          <Property Name="IDUbigeo" Type="nchar" MaxLength="6" />
+          <Property Name="Nom_empl" Type="varchar" MaxLength="55" />
+          <Property Name="ape_empl" Type="varchar" MaxLength="55" />
+          <Property Name="fecha_ingreso_empl" Type="datetime" />
+          <Property Name="telefono_empl" Type="char" MaxLength="9" />
+          <Property Name="correo_empl" Type="varchar" MaxLength="50" />
+          <Property Name="fec_nacimiento_empl" Type="datetime" />
+          <Property Name="fec_vencimi_contr_empl" Type="datetime" />
+          <Property Name="sexo_empl" Type="char" MaxLength="1" />
+          <Property Name="dni_empl" Type="char" MaxLength="8" />
+          <Property Name="fec_reg_empl" Type="datetime" />
+          <Property Name="usu_reg_empl" Type="varchar" MaxLength="30" />
+          <Property Name="fec_ultm_mod_empl" Type="datetime" />
+          <Property Name="usu_ultm_mod_empl" Type="varchar" MaxLength="30" />
+          <Property Name="estado_empl" Type="char" MaxLength="1" />
+          <Property Name="Foto" Type="image" />
+          <Property Name="id_ACF" Type="char" MaxLength="6" />
+        </EntityType>
+        <EntityType Name="TB_Producto">
+          <Key>
+            <PropertyRef Name="IDProducto" />
+          </Key>
+          <Property Name="IDProducto" Type="char" MaxLength="4" Nullable="false" />
+          <Property Name="IDReceta" Type="char" MaxLength="4" Nullable="false" />
+          <Property Name="IDUnidadMedida" Type="char" MaxLength="4" Nullable="false" />
+          <Property Name="Descripcion" Type="varchar" MaxLength="25" />
+          <Property Name="Precio" Type="money" />
+          <Property Name="presentacion" Type="int" Nullable="false" />
+          <Property Name="Stock" Type="int" />
+          <Property Name="Stock_min" Type="int" />
+          <Property Name="fec_reg_pro" Type="datetime" />
+          <Property Name="usu_reg_pro" Type="varchar" MaxLength="30" />
+          <Property Name="fec_ultm_mod_pro" Type="datetime" />
+          <Property Name="usu_ultm_mod_pro" Type="varchar" MaxLength="30" />
+          <Property Name="estado" Type="char" MaxLength="1" Nullable="false" />
+        </EntityType>
+        <EntityType Name="TB_Proveedor">
+          <Key>
+            <PropertyRef Name="IDProveedor" />
+          </Key>
+          <Property Name="IDProveedor" Type="char" MaxLength="4" Nullable="false" />
+          <Property Name="IDUbigeo" Type="nchar" MaxLength="6" />
+          <Property Name="nom_prv" Type="varchar" MaxLength="25" />
+          <Property Name="ape_prv" Type="varchar" MaxLength="25" />
+          <Property Name="telefono_prv" Type="char" MaxLength="9" />
+          <Property Name="correo_prv" Type="varchar" MaxLength="30" />
+          <Property Name="tipo_prv" Type="char" MaxLength="1" />
+          <Property Name="ruc_prv" Type="char" MaxLength="11" />
+          <Property Name="fec_reg_prv" Type="datetime" />
+          <Property Name="usu_reg_prv" Type="varchar" MaxLength="30" />
+          <Property Name="fec_ultm_mod_prv" Type="datetime" />
+          <Property Name="usu_ultm_mod_prv" Type="varchar" MaxLength="30" />
+          <Property Name="estado_prv" Type="char" MaxLength="1" />
+          <Property Name="raz_social_prv" Type="varchar" MaxLength="55" />
+        </EntityType>
+        <Function Name="usp_ActualizarEmpleado" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="vcodEmpl" Type="char" Mode="In" />
+          <Parameter Name="idUbig" Type="char" Mode="In" />
+          <Parameter Name="NombEmpl" Type="varchar" Mode="In" />
+          <Parameter Name="ApeEmpl" Type="varchar" Mode="In" />
+          <Parameter Name="telfEmpl" Type="char" Mode="In" />
+          <Parameter Name="emailEmpl" Type="varchar" Mode="In" />
+          <Parameter Name="fVencContEmpl" Type="datetime" Mode="In" />
+          <Parameter Name="sexoEmpl" Type="char" Mode="In" />
+          <Parameter Name="dniEmpl" Type="char" Mode="In" />
+          <Parameter Name="UsuRegEmpl" Type="varchar" Mode="In" />
+          <Parameter Name="estEmpl" Type="char" Mode="In" />
+          <Parameter Name="ACF" Type="char" Mode="In" />
+        </Function>
+        <Function Name="usp_ConsultarEmpleado" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="vcodEmpl" Type="char" Mode="In" />
+        </Function>
+        <Function Name="usp_EliminarEmpleado" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="vcodEmpl" Type="char" Mode="In" />
+        </Function>
+        <Function Name="usp_InsertarEmpleado" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="idUbig" Type="char" Mode="In" />
+          <Parameter Name="NombEmpl" Type="varchar" Mode="In" />
+          <Parameter Name="ApeEmpl" Type="varchar" Mode="In" />
+          <Parameter Name="fecIngrEmpl" Type="datetime" Mode="In" />
+          <Parameter Name="telfEmpl" Type="char" Mode="In" />
+          <Parameter Name="emailEmpl" Type="varchar" Mode="In" />
+          <Parameter Name="fnacEmpl" Type="datetime" Mode="In" />
+          <Parameter Name="fVencContEmpl" Type="datetime" Mode="In" />
+          <Parameter Name="sexoEmpl" Type="char" Mode="In" />
+          <Parameter Name="dniEmpl" Type="char" Mode="In" />
+          <Parameter Name="UsuRegEmpl" Type="varchar" Mode="In" />
+          <Parameter Name="estEmpl" Type="char" Mode="In" />
+          <Parameter Name="foto" Type="image" Mode="In" />
+          <Parameter Name="ACF" Type="char" Mode="In" />
+        </Function>
+        <Function Name="usp_ListarEmpleado" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <EntityContainer Name="BD_CerveceriaCLLModelStoreContainer">
+          <EntitySet Name="TB_Empleado" EntityType="Self.TB_Empleado" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TB_Producto" EntityType="Self.TB_Producto" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TB_Proveedor" EntityType="Self.TB_Proveedor" Schema="dbo" store:Type="Tables" />
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="BD_CerveceriaCLLModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="TB_Empleado">
+          <Key>
+            <PropertyRef Name="IDEmpleado" />
+          </Key>
+          <Property Name="IDEmpleado" Type="String" MaxLength="4" FixedLength="true" Unicode="false" Nullable="false" />
+          <Property Name="IDUbigeo" Type="String" MaxLength="6" FixedLength="true" Unicode="true" />
+          <Property Name="Nom_empl" Type="String" MaxLength="55" FixedLength="false" Unicode="false" />
+          <Property Name="ape_empl" Type="String" MaxLength="55" FixedLength="false" Unicode="false" />
+          <Property Name="fecha_ingreso_empl" Type="DateTime" Precision="3" />
+          <Property Name="telefono_empl" Type="String" MaxLength="9" FixedLength="true" Unicode="false" />
+          <Property Name="correo_empl" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="fec_nacimiento_empl" Type="DateTime" Precision="3" />
+          <Property Name="fec_vencimi_contr_empl" Type="DateTime" Precision="3" />
+          <Property Name="sexo_empl" Type="String" MaxLength="1" FixedLength="true" Unicode="false" />
+          <Property Name="dni_empl" Type="String" MaxLength="8" FixedLength="true" Unicode="false" />
+          <Property Name="fec_reg_empl" Type="DateTime" Precision="3" />
+          <Property Name="usu_reg_empl" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="fec_ultm_mod_empl" Type="DateTime" Precision="3" />
+          <Property Name="usu_ultm_mod_empl" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="estado_empl" Type="String" MaxLength="1" FixedLength="true" Unicode="false" />
+          <Property Name="Foto" Type="Binary" MaxLength="Max" FixedLength="false" />
+          <Property Name="id_ACF" Type="String" MaxLength="6" FixedLength="true" Unicode="false" />
+        </EntityType>
+        <EntityType Name="TB_Producto">
+          <Key>
+            <PropertyRef Name="IDProducto" />
+          </Key>
+          <Property Name="IDProducto" Type="String" MaxLength="4" FixedLength="true" Unicode="false" Nullable="false" />
+          <Property Name="IDReceta" Type="String" MaxLength="4" FixedLength="true" Unicode="false" Nullable="false" />
+          <Property Name="IDUnidadMedida" Type="String" MaxLength="4" FixedLength="true" Unicode="false" Nullable="false" />
+          <Property Name="Descripcion" Type="String" MaxLength="25" FixedLength="false" Unicode="false" />
+          <Property Name="Precio" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="presentacion" Type="Int32" Nullable="false" />
+          <Property Name="Stock" Type="Int32" />
+          <Property Name="Stock_min" Type="Int32" />
+          <Property Name="fec_reg_pro" Type="DateTime" Precision="3" />
+          <Property Name="usu_reg_pro" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="fec_ultm_mod_pro" Type="DateTime" Precision="3" />
+          <Property Name="usu_ultm_mod_pro" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="estado" Type="String" MaxLength="1" FixedLength="true" Unicode="false" Nullable="false" />
+        </EntityType>
+        <EntityType Name="TB_Proveedor">
+          <Key>
+            <PropertyRef Name="IDProveedor" />
+          </Key>
+          <Property Name="IDProveedor" Type="String" MaxLength="4" FixedLength="true" Unicode="false" Nullable="false" />
+          <Property Name="IDUbigeo" Type="String" MaxLength="6" FixedLength="true" Unicode="true" />
+          <Property Name="nom_prv" Type="String" MaxLength="25" FixedLength="false" Unicode="false" />
+          <Property Name="ape_prv" Type="String" MaxLength="25" FixedLength="false" Unicode="false" />
+          <Property Name="telefono_prv" Type="String" MaxLength="9" FixedLength="true" Unicode="false" />
+          <Property Name="correo_prv" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="tipo_prv" Type="String" MaxLength="1" FixedLength="true" Unicode="false" />
+          <Property Name="ruc_prv" Type="String" MaxLength="11" FixedLength="true" Unicode="false" />
+          <Property Name="fec_reg_prv" Type="DateTime" Precision="3" />
+          <Property Name="usu_reg_prv" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="fec_ultm_mod_prv" Type="DateTime" Precision="3" />
+          <Property Name="usu_ultm_mod_prv" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="estado_prv" Type="String" MaxLength="1" FixedLength="true" Unicode="false" />
+          <Property Name="raz_social_prv" Type="String" MaxLength="55" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityContainer Name="CerveceriaEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="TB_Empleado" EntityType="Self.TB_Empleado" />
+          <EntitySet Name="TB_Producto" EntityType="Self.TB_Producto" />
+          <EntitySet Name="TB_Proveedor" EntityType="Self.TB_Proveedor" />
+          <FunctionImport Name="usp_ActualizarEmpleado">
+            <Parameter Name="vcodEmpl" Mode="In" Type="String" />
+            <Parameter Name="idUbig" Mode="In" Type="String" />
+            <Parameter Name="NombEmpl" Mode="In" Type="String" />
+            <Parameter Name="ApeEmpl" Mode="In" Type="String" />
+            <Parameter Name="telfEmpl" Mode="In" Type="String" />
+            <Parameter Name="emailEmpl" Mode="In" Type="String" />
+            <Parameter Name="fVencContEmpl" Mode="In" Type="DateTime" />
+            <Parameter Name="sexoEmpl" Mode="In" Type="String" />
+            <Parameter Name="dniEmpl" Mode="In" Type="String" />
+            <Parameter Name="UsuRegEmpl" Mode="In" Type="String" />
+            <Parameter Name="estEmpl" Mode="In" Type="String" />
+            <Parameter Name="ACF" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="usp_ConsultarEmpleado" ReturnType="Collection(BD_CerveceriaCLLModel.usp_ConsultarEmpleado_Result)">
+            <Parameter Name="vcodEmpl" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="usp_EliminarEmpleado">
+            <Parameter Name="vcodEmpl" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="usp_InsertarEmpleado">
+            <Parameter Name="idUbig" Mode="In" Type="String" />
+            <Parameter Name="NombEmpl" Mode="In" Type="String" />
+            <Parameter Name="ApeEmpl" Mode="In" Type="String" />
+            <Parameter Name="fecIngrEmpl" Mode="In" Type="DateTime" />
+            <Parameter Name="telfEmpl" Mode="In" Type="String" />
+            <Parameter Name="emailEmpl" Mode="In" Type="String" />
+            <Parameter Name="fnacEmpl" Mode="In" Type="DateTime" />
+            <Parameter Name="fVencContEmpl" Mode="In" Type="DateTime" />
+            <Parameter Name="sexoEmpl" Mode="In" Type="String" />
+            <Parameter Name="dniEmpl" Mode="In" Type="String" />
+            <Parameter Name="UsuRegEmpl" Mode="In" Type="String" />
+            <Parameter Name="estEmpl" Mode="In" Type="String" />
+            <Parameter Name="foto" Mode="In" Type="Binary" />
+            <Parameter Name="ACF" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="usp_ListarEmpleado" ReturnType="Collection(BD_CerveceriaCLLModel.usp_ListarEmpleado_Result)" />
+        </EntityContainer>
+        <ComplexType Name="usp_ConsultarEmpleado_Result">
+          <Property Type="String" Name="IDEmpleado" Nullable="false" MaxLength="4" />
+          <Property Type="String" Name="IDUbigeo" Nullable="true" MaxLength="6" />
+          <Property Type="String" Name="ID_ACF" Nullable="false" MaxLength="6" />
+          <Property Type="String" Name="Nombre_Completo" Nullable="true" MaxLength="112" />
+          <Property Type="String" Name="Nom_empl" Nullable="true" MaxLength="55" />
+          <Property Type="String" Name="ape_empl" Nullable="true" MaxLength="55" />
+          <Property Type="Int32" Name="edad" Nullable="true" />
+          <Property Type="String" Name="sexo" Nullable="true" MaxLength="9" />
+          <Property Type="String" Name="dni_empl" Nullable="true" MaxLength="8" />
+          <Property Type="String" Name="Area" Nullable="false" MaxLength="225" />
+          <Property Type="String" Name="Cargo" Nullable="false" MaxLength="225" />
+          <Property Type="String" Name="Funcion" Nullable="false" MaxLength="225" />
+          <Property Type="String" Name="departamento" Nullable="true" MaxLength="255" />
+          <Property Type="String" Name="provincia" Nullable="true" MaxLength="255" />
+          <Property Type="String" Name="distrito" Nullable="true" MaxLength="255" />
+          <Property Type="String" Name="telefono_empl" Nullable="true" MaxLength="9" />
+          <Property Type="String" Name="correo_empl" Nullable="true" MaxLength="50" />
+          <Property Type="DateTime" Name="fec_nacimiento_empl" Nullable="true" Precision="23" />
+          <Property Type="DateTime" Name="fec_vencimi_contr_empl" Nullable="true" Precision="23" />
+          <Property Type="Binary" Name="Foto" Nullable="true" MaxLength="Max" />
+          <Property Type="String" Name="usu_reg_empl" Nullable="true" MaxLength="30" />
+          <Property Type="DateTime" Name="fec_reg_empl" Nullable="true" Precision="23" />
+          <Property Type="String" Name="usu_ultm_mod_empl" Nullable="true" MaxLength="30" />
+          <Property Type="DateTime" Name="fec_ultm_mod_empl" Nullable="true" Precision="23" />
+          <Property Type="String" Name="Estado" Nullable="true" MaxLength="8" />
+          <Property Type="String" Name="estado_empl" Nullable="true" MaxLength="1" />
+          <Property Type="String" Name="sexo_empl" Nullable="true" MaxLength="1" />
+        </ComplexType>
+        <ComplexType Name="usp_ListarEmpleado_Result">
+          <Property Type="String" Name="IDEmpleado" Nullable="false" MaxLength="4" />
+          <Property Type="String" Name="IDUbigeo" Nullable="true" MaxLength="6" />
+          <Property Type="String" Name="ID_ACF" Nullable="false" MaxLength="6" />
+          <Property Type="String" Name="Nombre_Completo" Nullable="true" MaxLength="112" />
+          <Property Type="String" Name="Nom_empl" Nullable="true" MaxLength="55" />
+          <Property Type="String" Name="ape_empl" Nullable="true" MaxLength="55" />
+          <Property Type="Int32" Name="edad" Nullable="true" />
+          <Property Type="String" Name="sexo" Nullable="true" MaxLength="9" />
+          <Property Type="String" Name="dni_empl" Nullable="true" MaxLength="8" />
+          <Property Type="String" Name="Area" Nullable="false" MaxLength="225" />
+          <Property Type="String" Name="Cargo" Nullable="false" MaxLength="225" />
+          <Property Type="String" Name="Funcion" Nullable="false" MaxLength="225" />
+          <Property Type="String" Name="departamento" Nullable="true" MaxLength="255" />
+          <Property Type="String" Name="provincia" Nullable="true" MaxLength="255" />
+          <Property Type="String" Name="distrito" Nullable="true" MaxLength="255" />
+          <Property Type="String" Name="telefono_empl" Nullable="true" MaxLength="9" />
+          <Property Type="String" Name="correo_empl" Nullable="true" MaxLength="50" />
+          <Property Type="DateTime" Name="fec_nacimiento_empl" Nullable="true" Precision="23" />
+          <Property Type="DateTime" Name="fec_vencimi_contr_empl" Nullable="true" Precision="23" />
+          <Property Type="Binary" Name="Foto" Nullable="true" MaxLength="Max" />
+          <Property Type="String" Name="usu_reg_empl" Nullable="true" MaxLength="30" />
+          <Property Type="DateTime" Name="fec_reg_empl" Nullable="true" Precision="23" />
+          <Property Type="String" Name="usu_ultm_mod_empl" Nullable="true" MaxLength="30" />
+          <Property Type="DateTime" Name="fec_ultm_mod_empl" Nullable="true" Precision="23" />
+          <Property Type="String" Name="Estado" Nullable="true" MaxLength="8" />
+          <Property Type="String" Name="estado_empl" Nullable="true" MaxLength="1" />
+          <Property Type="String" Name="sexo_empl" Nullable="true" MaxLength="1" />
+        </ComplexType>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="BD_CerveceriaCLLModelStoreContainer" CdmEntityContainer="CerveceriaEntities">
+          <EntitySetMapping Name="TB_Empleado">
+            <EntityTypeMapping TypeName="BD_CerveceriaCLLModel.TB_Empleado">
+              <MappingFragment StoreEntitySet="TB_Empleado">
+                <ScalarProperty Name="IDEmpleado" ColumnName="IDEmpleado" />
+                <ScalarProperty Name="IDUbigeo" ColumnName="IDUbigeo" />
+                <ScalarProperty Name="Nom_empl" ColumnName="Nom_empl" />
+                <ScalarProperty Name="ape_empl" ColumnName="ape_empl" />
+                <ScalarProperty Name="fecha_ingreso_empl" ColumnName="fecha_ingreso_empl" />
+                <ScalarProperty Name="telefono_empl" ColumnName="telefono_empl" />
+                <ScalarProperty Name="correo_empl" ColumnName="correo_empl" />
+                <ScalarProperty Name="fec_nacimiento_empl" ColumnName="fec_nacimiento_empl" />
+                <ScalarProperty Name="fec_vencimi_contr_empl" ColumnName="fec_vencimi_contr_empl" />
+                <ScalarProperty Name="sexo_empl" ColumnName="sexo_empl" />
+                <ScalarProperty Name="dni_empl" ColumnName="dni_empl" />
+                <ScalarProperty Name="fec_reg_empl" ColumnName="fec_reg_empl" />
+                <ScalarProperty Name="usu_reg_empl" ColumnName="usu_reg_empl" />
+                <ScalarProperty Name="fec_ultm_mod_empl" ColumnName="fec_ultm_mod_empl" />
+                <ScalarProperty Name="usu_ultm_mod_empl" ColumnName="usu_ultm_mod_empl" />
+                <ScalarProperty Name="estado_empl" ColumnName="estado_empl" />
+                <ScalarProperty Name="Foto" ColumnName="Foto" />
+                <ScalarProperty Name="id_ACF" ColumnName="id_ACF" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TB_Producto">
+            <EntityTypeMapping TypeName="BD_CerveceriaCLLModel.TB_Producto">
+              <MappingFragment StoreEntitySet="TB_Producto">
+                <ScalarProperty Name="IDProducto" ColumnName="IDProducto" />
+                <ScalarProperty Name="IDReceta" ColumnName="IDReceta" />
+                <ScalarProperty Name="IDUnidadMedida" ColumnName="IDUnidadMedida" />
+                <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
+                <ScalarProperty Name="Precio" ColumnName="Precio" />
+                <ScalarProperty Name="presentacion" ColumnName="presentacion" />
+                <ScalarProperty Name="Stock" ColumnName="Stock" />
+                <ScalarProperty Name="Stock_min" ColumnName="Stock_min" />
+                <ScalarProperty Name="fec_reg_pro" ColumnName="fec_reg_pro" />
+                <ScalarProperty Name="usu_reg_pro" ColumnName="usu_reg_pro" />
+                <ScalarProperty Name="fec_ultm_mod_pro" ColumnName="fec_ultm_mod_pro" />
+                <ScalarProperty Name="usu_ultm_mod_pro" ColumnName="usu_ultm_mod_pro" />
+                <ScalarProperty Name="estado" ColumnName="estado" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TB_Proveedor">
+            <EntityTypeMapping TypeName="BD_CerveceriaCLLModel.TB_Proveedor">
+              <MappingFragment StoreEntitySet="TB_Proveedor">
+                <ScalarProperty Name="IDProveedor" ColumnName="IDProveedor" />
+                <ScalarProperty Name="IDUbigeo" ColumnName="IDUbigeo" />
+                <ScalarProperty Name="nom_prv" ColumnName="nom_prv" />
+                <ScalarProperty Name="ape_prv" ColumnName="ape_prv" />
+                <ScalarProperty Name="telefono_prv" ColumnName="telefono_prv" />
+                <ScalarProperty Name="correo_prv" ColumnName="correo_prv" />
+                <ScalarProperty Name="tipo_prv" ColumnName="tipo_prv" />
+                <ScalarProperty Name="ruc_prv" ColumnName="ruc_prv" />
+                <ScalarProperty Name="fec_reg_prv" ColumnName="fec_reg_prv" />
+                <ScalarProperty Name="usu_reg_prv" ColumnName="usu_reg_prv" />
+                <ScalarProperty Name="fec_ultm_mod_prv" ColumnName="fec_ultm_mod_prv" />
+                <ScalarProperty Name="usu_ultm_mod_prv" ColumnName="usu_ultm_mod_prv" />
+                <ScalarProperty Name="estado_prv" ColumnName="estado_prv" />
+                <ScalarProperty Name="raz_social_prv" ColumnName="raz_social_prv" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <FunctionImportMapping FunctionImportName="usp_ActualizarEmpleado" FunctionName="BD_CerveceriaCLLModel.Store.usp_ActualizarEmpleado" />
+          <FunctionImportMapping FunctionImportName="usp_ConsultarEmpleado" FunctionName="BD_CerveceriaCLLModel.Store.usp_ConsultarEmpleado">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="BD_CerveceriaCLLModel.usp_ConsultarEmpleado_Result">
+                <ScalarProperty Name="IDEmpleado" ColumnName="IDEmpleado" />
+                <ScalarProperty Name="IDUbigeo" ColumnName="IDUbigeo" />
+                <ScalarProperty Name="ID_ACF" ColumnName="ID_ACF" />
+                <ScalarProperty Name="Nombre_Completo" ColumnName="Nombre_Completo" />
+                <ScalarProperty Name="Nom_empl" ColumnName="Nom_empl" />
+                <ScalarProperty Name="ape_empl" ColumnName="ape_empl" />
+                <ScalarProperty Name="edad" ColumnName="edad" />
+                <ScalarProperty Name="sexo" ColumnName="sexo" />
+                <ScalarProperty Name="dni_empl" ColumnName="dni_empl" />
+                <ScalarProperty Name="Area" ColumnName="Area" />
+                <ScalarProperty Name="Cargo" ColumnName="Cargo" />
+                <ScalarProperty Name="Funcion" ColumnName="Funcion" />
+                <ScalarProperty Name="departamento" ColumnName="departamento" />
+                <ScalarProperty Name="provincia" ColumnName="provincia" />
+                <ScalarProperty Name="distrito" ColumnName="distrito" />
+                <ScalarProperty Name="telefono_empl" ColumnName="telefono_empl" />
+                <ScalarProperty Name="correo_empl" ColumnName="correo_empl" />
+                <ScalarProperty Name="fec_nacimiento_empl" ColumnName="fec_nacimiento_empl" />
+                <ScalarProperty Name="fec_vencimi_contr_empl" ColumnName="fec_vencimi_contr_empl" />
+                <ScalarProperty Name="Foto" ColumnName="Foto" />
+                <ScalarProperty Name="usu_reg_empl" ColumnName="usu_reg_empl" />
+                <ScalarProperty Name="fec_reg_empl" ColumnName="fec_reg_empl" />
+                <ScalarProperty Name="usu_ultm_mod_empl" ColumnName="usu_ultm_mod_empl" />
+                <ScalarProperty Name="fec_ultm_mod_empl" ColumnName="fec_ultm_mod_empl" />
+                <ScalarProperty Name="Estado" ColumnName="Estado" />
+                <ScalarProperty Name="estado_empl" ColumnName="estado_empl" />
+                <ScalarProperty Name="sexo_empl" ColumnName="sexo_empl" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="usp_EliminarEmpleado" FunctionName="BD_CerveceriaCLLModel.Store.usp_EliminarEmpleado" />
+          <FunctionImportMapping FunctionImportName="usp_InsertarEmpleado" FunctionName="BD_CerveceriaCLLModel.Store.usp_InsertarEmpleado" />
+          <FunctionImportMapping FunctionImportName="usp_ListarEmpleado" FunctionName="BD_CerveceriaCLLModel.Store.usp_ListarEmpleado">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="BD_CerveceriaCLLModel.usp_ListarEmpleado_Result">
+                <ScalarProperty Name="IDEmpleado" ColumnName="IDEmpleado" />
+                <ScalarProperty Name="IDUbigeo" ColumnName="IDUbigeo" />
+                <ScalarProperty Name="ID_ACF" ColumnName="ID_ACF" />
+                <ScalarProperty Name="Nombre_Completo" ColumnName="Nombre_Completo" />
+                <ScalarProperty Name="Nom_empl" ColumnName="Nom_empl" />
+                <ScalarProperty Name="ape_empl" ColumnName="ape_empl" />
+                <ScalarProperty Name="edad" ColumnName="edad" />
+                <ScalarProperty Name="sexo" ColumnName="sexo" />
+                <ScalarProperty Name="dni_empl" ColumnName="dni_empl" />
+                <ScalarProperty Name="Area" ColumnName="Area" />
+                <ScalarProperty Name="Cargo" ColumnName="Cargo" />
+                <ScalarProperty Name="Funcion" ColumnName="Funcion" />
+                <ScalarProperty Name="departamento" ColumnName="departamento" />
+                <ScalarProperty Name="provincia" ColumnName="provincia" />
+                <ScalarProperty Name="distrito" ColumnName="distrito" />
+                <ScalarProperty Name="telefono_empl" ColumnName="telefono_empl" />
+                <ScalarProperty Name="correo_empl" ColumnName="correo_empl" />
+                <ScalarProperty Name="fec_nacimiento_empl" ColumnName="fec_nacimiento_empl" />
+                <ScalarProperty Name="fec_vencimi_contr_empl" ColumnName="fec_vencimi_contr_empl" />
+                <ScalarProperty Name="Foto" ColumnName="Foto" />
+                <ScalarProperty Name="usu_reg_empl" ColumnName="usu_reg_empl" />
+                <ScalarProperty Name="fec_reg_empl" ColumnName="fec_reg_empl" />
+                <ScalarProperty Name="usu_ultm_mod_empl" ColumnName="usu_ultm_mod_empl" />
+                <ScalarProperty Name="fec_ultm_mod_empl" ColumnName="fec_ultm_mod_empl" />
+                <ScalarProperty Name="Estado" ColumnName="Estado" />
+                <ScalarProperty Name="estado_empl" ColumnName="estado_empl" />
+                <ScalarProperty Name="sexo_empl" ColumnName="sexo_empl" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="Ninguno" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
